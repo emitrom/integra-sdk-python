@@ -8,6 +8,7 @@
 
 - python 2.6+
 - lxml
+- [requests](http://docs.python-requests.org/en/latest/)
 - integra_major_minor_build
 
 # Build your own integra_major_minor_build
