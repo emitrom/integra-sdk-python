@@ -6,6 +6,7 @@
 
 # Dependencies
 
+- python 2.6+
 - lxml
 - integra_major_minor_build
 
