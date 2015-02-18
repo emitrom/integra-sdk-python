@@ -8,7 +8,7 @@
 
 - python 2.6+
 - lxml
-- [requests](http://docs.python-requests.org/en/latest/)
+- requests
 - integra_major_minor_build
 
 # Build your own integra_major_minor_build
@@ -16,6 +16,7 @@
 - Download the [Integra XSD](http://docs.emitrom.com/docs/integra/1.0.0/ns0.xsd).
 - Install [pip](https://pip.pypa.io/en/latest/)
 - pip install lxml
+- pip install requests
 - pip install generateDS
 - generateDS.py -o integra_major_minor_build.py integra.xsd 
 
