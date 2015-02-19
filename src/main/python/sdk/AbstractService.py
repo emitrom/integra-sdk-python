@@ -15,12 +15,12 @@ class AbstractService(object):
         return
     
     @abc.abstractmethod
-    def getAll(self):
+    def get_all(self):
         """Gets a collection of entities"""
         return
     
     @abc.abstractmethod
-    def getById(self, entity_id):
+    def get_by_id(self, entity_id):
         """Gets an entity given its id"""
         return
     
