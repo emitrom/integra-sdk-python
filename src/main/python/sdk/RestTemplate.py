@@ -1,10 +1,16 @@
 import requests
 from requests.auth import HTTPBasicAuth
 from requests.packages.urllib3 import disable_warnings
+from main.python.sdk import integra
 
 class RestTemplate(object):
 
-    def __init__(self, url=None, username=None, password=None):
+    _shared_state = {}
+
+    def __init__(self):
+        self.__dict__ = self._shared_state
+        
+    def init(self, url=None, username=None, password=None):
         self.url = url
         self.username = username
         self.password = password
@@ -18,22 +24,22 @@ class RestTemplate(object):
         
     def get_base_url(self):
         return self.url
-    
+     
     def post(self, rest_resource, entity):
-        r = requests.post(self.url + "/" + rest_resource, verify=False, self.auth, headers=self.content_type, data=entity)
-        return r.text
-    
+        r = requests.post(self.url + "/" + rest_resource, verify=False, auth=self.auth, headers=self.content_type, data=entity)
+        return integra.parseString(r.content, True)
+     
     def get_all(self, rest_resource):
-        r = requests.get(self.url + "/" + rest_resource, verify=False, self.auth, headers=self.accept_header)
-        return r.text
-    
+        r = requests.get(self.url + "/" + rest_resource, verify=False, auth=self.auth, headers=self.accept_header)
+        return integra.parseString(r.content, True)
+     
     def get_by_id(self, rest_resource, entity_id):
-        r = requests.get(self.url + "/" + rest_resource + "/" + entity_id, verify=False, self.auth, headers=self.accept_header)
-        return r.text
-
+        r = requests.get(self.url + "/" + rest_resource + "/" + entity_id, verify=False, auth=self.auth, headers=self.accept_header)
+        return integra.parseString(r.content, True)
+ 
     def put(self, rest_resource, entity):
-        r = requests.put(self.url + "/" + rest_resource, verify=False, self.auth, headers=self.content_type, data=entity)
-        return r.text
-    
+        r = requests.put(self.url + "/" + rest_resource, verify=False, auth=self.auth, headers=self.content_type, data=entity)
+        return integra.parseString(r.content, True)
+     
     def delete(self, rest_resource, entity_id):
-        requests.delete(self.url + "/" + rest_resource + "/" + entity_id, verify=False, self.auth, headers=self.accept_header)
+        requests.delete(self.url + "/" + rest_resource + "/" + entity_id, verify=False, auth=self.auth, headers=self.accept_header)
