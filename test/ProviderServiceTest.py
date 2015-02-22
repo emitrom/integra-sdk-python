@@ -1,6 +1,6 @@
-from test.ServiceTest import ServiceTest
-from main.python.sdk.RestTemplate import RestTemplate
-from main.python.sdk.integra import provider
+from RestTemplate import RestTemplate
+from integra import provider
+from ServiceTest import ServiceTest
 
 class ProviderServiceTest(ServiceTest):
 

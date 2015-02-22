@@ -1,5 +1,5 @@
 import unittest
-from main.python.sdk.RestTemplate import RestTemplate
+from RestTemplate import RestTemplate
 
 class ServiceTest(unittest.TestCase):
 

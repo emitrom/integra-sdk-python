@@ -1,8 +1,8 @@
 import requests
 from requests.auth import HTTPBasicAuth
 from requests.packages.urllib3 import disable_warnings
-from main.python.sdk import integra
 import cStringIO
+import integra
 
 class RestTemplate(object):
 
