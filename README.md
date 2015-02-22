@@ -18,8 +18,64 @@
 - pip install lxml
 - pip install requests
 - pip install generateDS
-- generateDS.py -o integra_major_minor_build.py integra.xsd 
+- generateDS.py -o integra_major_minor_build.py integra.xsd
+ 
+# Usage
 
-#License
+1- Init RestTemplate:
+
+```python
+RestTemplate().init('https://localhost:8443/rest', 'admin', 'integra')
+```
+
+2- Invoke RestTemplate REST methods:
+
+post  
+get_all  
+get_by_id  
+put  
+delete  
+
+- RestTemplate contains a static list of REST resource end points
+
+- Example putting it all together. Creating a provider:
+
+```python
+class ProviderServiceTest(unittest.TestCase):
+
+    description = 'test desc'
+    hostname = 'localhost'
+    name = 'test name'
+    password = 'password'
+    port = 9999
+    timeout = 1000
+    
+    def setUp(self):
+      RestTemplate().init('https://localhost:8443/rest', 'admin', 'integra')
+
+    def test_create(self):
+      prov = self._get_provider()
+        
+      prov = RestTemplate().post(RestTemplate.PROVIDERS, prov)
+      self.assertIsNotNone(prov, 'Unable to create provider')
+      self.assertIsNotNone(prov.get_id())
+      
+    def _get_provider(self):
+      prov = provider()
+      prov.set_description(self.description)
+      prov.set_hostname(self.hostname)
+      prov.set_name(self.name)
+      prov.set_password(self.password)
+      prov.set_port(self.port)
+      prov.set_secured(True)
+      prov.set_timeout(self.timeout)
+      
+      return prov
+      
+if __name__ == "__main__":
+    unittest.main()
+```
+
+# License
 
 The Integra Python SDK is Open Source software released under the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0.html).
