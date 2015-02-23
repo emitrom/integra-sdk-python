@@ -45,9 +45,7 @@ Usage
 * put  
 * delete  
 
-RestTemplate contains a static list of REST resource end points
-
-Example putting it all together. Creating a provider::
+RestTemplate contains a static list of REST resource end points. Example putting it all together; creating a provider::
 
  class ProviderServiceTest(unittest.TestCase):
 
